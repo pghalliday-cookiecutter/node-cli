@@ -1,2 +1,2 @@
-# node-es6-cli
+# node-cli
 Project template for NodeJS CLI applications
