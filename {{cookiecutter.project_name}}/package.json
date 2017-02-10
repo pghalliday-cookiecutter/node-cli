@@ -1,0 +1,59 @@
+{
+  "name": "{{cookiecutter.project_name}}",
+  "version": "1.0.0",
+  "description": "{{cookiecutter.description}}",
+  "bin": {
+    "{{cookiecutter.project_name}}": "./bin/{{cookiecutter.project_name}}",
+    "{{cookiecutter.project_name}}-sub": "./bin/{{cookiecutter.project_name}}-sub"
+  },
+  "main": "lib/{{cookiecutter.project_name}}.js",
+  "scripts": {
+    "cmd:lint": "eslint .",
+    "cmd:unit-test": "cross-env NODE_ENV=test nyc mocha --opts test/unit/mocha.opts",
+    "cmd:build": "babel src --out-dir lib",
+    "cmd:integration-test": "mocha --opts test/integration/mocha.opts",
+    "cmd:coveralls": "cat ./coverage/lcov.info | coveralls",
+    "unit-test": "run-s cmd:lint cmd:unit-test",
+    "build": "run-s unit-test cmd:build",
+    "test": "run-s build cmd:integration-test",
+    "ci": "run-s test cmd:coveralls",
+    "watch": "chokidar '+(bin|src|test)/**/*' -c 'npm -s test'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}.git"
+  },
+  "keywords": [],
+  "author": "{{cookiecutter.full_name}} <{{cookiecutter.email}}> ({{cookiecutter.website}})",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/issues"
+  },
+  "homepage": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.22.0",
+    "co": "^4.6.0",
+    "commander": "^2.9.0",
+    "dsl-config": "^2.0.2",
+    "lodash": "^4.17.4",
+    "semver": "^5.3.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-istanbul": "^3.1.2",
+    "babel-preset-env": "^1.1.8",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chokidar-cli": "^1.2.0",
+    "co-mocha": "^1.2.0",
+    "coveralls": "^2.11.15",
+    "cross-env": "^3.1.4",
+    "eslint": "^3.14.1",
+    "eslint-config-google": "^0.7.1",
+    "mocha": "^3.2.0",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.0.1",
+    "nyc": "^10.1.2"
+  }
+}

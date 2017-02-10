@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+// vim: ft=javascript
+
+var commandGroup = require('./command-group');
+commandGroup('../lib/cli/{{cookiecutter.project_name}}');

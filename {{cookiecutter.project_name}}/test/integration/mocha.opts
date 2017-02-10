@@ -1,0 +1,5 @@
+test/integration
+--recursive
+--require babel-register
+--require babel-polyfill
+--require co-mocha

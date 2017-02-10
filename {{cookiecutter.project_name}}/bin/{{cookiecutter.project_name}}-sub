@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+// vim: ft=javascript
+
+const command = require('./command');
+command('../lib/cli/{{cookiecutter.project_name}}/sub');
